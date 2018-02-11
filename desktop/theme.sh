@@ -26,7 +26,7 @@ check_status
 
 # INSTALLING THEME
 sudo echo -e "\n${BOLD}${YELLOW}INSTALLING THEME (vivacious dark/light)${RESET}"
-sudo add-apt-repository ppa:ravefinity-project/ppa -y && apt install -y update \ 
+sudo add-apt-repository ppa:ravefinity-project/ppa -y && apt install -y update \
 && apt install -y vivacious-colors-gtk-dark vivacious-colors-gtk-light \
 vivacious-unity-gtk-dark vivacious-unity-gtk-light
 check_status

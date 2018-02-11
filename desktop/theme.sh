@@ -36,8 +36,8 @@ sudo echo -e "\n${BOLD}${YELLOW}INSTALLING THEME (vivacious dark/light)${RESET}"
 sudo add-apt-repository ppa:ravefinity-project/ppa -y &> /dev/null
 sudo apt -y update &> /dev/null
 for theme in "${THEMES[@]}"; do
-    echo "${YELLOW}Installing :${RESET} ${BOLD}$pkg${RESET}"
-    sudo apt install "$pkg" -y &> /dev/null
+    echo "${YELLOW}Installing :${RESET} ${BOLD}$theme${RESET}"
+    sudo apt install "$theme" -y &> /dev/null
     done
 check_status
 
@@ -55,8 +55,8 @@ check_status
 
 # REMOVING ALL THE GARBAGES.
 sudo echo -e "\n${BOLD}${YELLOW}REMOVING TEMPERORY PPA${RESET}"
-sudo add-apt-repository --remove ppa:ravefinity-project/ppa -y && \
-sudo add-apt-repository --remove ppa:noobslab/icons -y && \
+sudo add-apt-repository --remove ppa:ravefinity-project/ppa -y
+sudo add-apt-repository --remove ppa:noobslab/icons -y
 sudo apt -y autoremove && sudo apt -y autoclean
 check_status
 

@@ -19,6 +19,13 @@ check_status()
 
 }
 
+THEMES=(
+    'vivacious-colors-gtk-dark'
+    'vivacious-colors-gtk-light'
+    'vivacious-unity-gtk-dark'
+    'vivacious-unity-gtk-light'
+)
+
 # UPDATING AND UPGRADING SYSTEM
 sudo echo -e "\n${BOLD}${YELLOW}STARTING SYSTEM UPDATE${RESET}"
 sudo xterm -e 'apt update -y && apt upgrade -y && apt autoremove -y'
@@ -26,20 +33,24 @@ check_status
 
 # INSTALLING THEME
 sudo echo -e "\n${BOLD}${YELLOW}INSTALLING THEME (vivacious dark/light)${RESET}"
-sudo add-apt-repository ppa:ravefinity-project/ppa -y && sudo apt install -y update \
-&& sudo apt install -y vivacious-colors-gtk-dark vivacious-colors-gtk-light \
-vivacious-unity-gtk-dark vivacious-unity-gtk-light
+sudo add-apt-repository ppa:ravefinity-project/ppa -y &> /dev/null
+sudo apt -y update &> /dev/null
+for theme in "${THEMES[@]}"; do
+    echo "${YELLOW}Installing :${RESET} ${BOLD}$pkg${RESET}"
+    sudo apt install "$pkg" -y &> /dev/null
+    done
 check_status
 
 # INSTALLING ICON
 sudo echo -e "\n${BOLD}${YELLOW}INSTALLING ICON (flatbalous-blue)${RESET}"
-sudo add-apt-repository ppa:noobslab/icons -y && \
-sudo apt -y update && apt install -y ultra-flat-icons
+sudo add-apt-repository ppa:noobslab/icons -y &> /dev/null
+sudo apt -y update &> /dev/null
+sudo apt install -y ultra-flat-icons &> /dev/null
 check_status
 
 # INSTALLING UBUNTU TWEAK TOOL
 sudo echo -e "\n${BOLD}${YELLOW}INSTALLING (unity-tweak-tool)${RESET}"
-sudo apt install -y unity-tweak-tool
+sudo apt install -y unity-tweak-tool &> /dev/null
 check_status
 
 # REMOVING ALL THE GARBAGES.

@@ -26,15 +26,15 @@ check_status
 
 # INSTALLING THEME
 sudo echo -e "\n${BOLD}${YELLOW}INSTALLING THEME (vivacious dark/light)${RESET}"
-sudo add-apt-repository ppa:ravefinity-project/ppa -y && apt install -y update \
-&& apt install -y vivacious-colors-gtk-dark vivacious-colors-gtk-light \
+sudo add-apt-repository ppa:ravefinity-project/ppa -y && sudo apt install -y update \
+&& sudo apt install -y vivacious-colors-gtk-dark vivacious-colors-gtk-light \
 vivacious-unity-gtk-dark vivacious-unity-gtk-light
 check_status
 
 # INSTALLING ICON
 sudo echo -e "\n${BOLD}${YELLOW}INSTALLING ICON (flatbalous-blue)${RESET}"
 sudo add-apt-repository ppa:noobslab/icons -y && \
-apt -y update && apt install -y ultra-flat-icons
+sudo apt -y update && apt install -y ultra-flat-icons
 check_status
 
 # INSTALLING UBUNTU TWEAK TOOL
@@ -45,8 +45,8 @@ check_status
 # REMOVING ALL THE GARBAGES.
 sudo echo -e "\n${BOLD}${YELLOW}REMOVING TEMPERORY PPA${RESET}"
 sudo add-apt-repository --remove ppa:ravefinity-project/ppa -y && \
-add-apt-repository --remove ppa:noobslab/icons -y && \
-apt -y autoremove && apt -y autoclean
+sudo add-apt-repository --remove ppa:noobslab/icons -y && \
+sudo apt -y autoremove && sudo apt -y autoclean
 check_status
 
 sudo echo -e "\n${BOLD}${YELLOW}<-- COMPLETED -->${RESET}"

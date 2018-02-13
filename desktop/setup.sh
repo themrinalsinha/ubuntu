@@ -31,6 +31,11 @@ essential_packages=(
     'synaptic'
     'libpq-dev'
     'checkinstall'
+    'libxml2-dev'
+    'libxslt1-dev'
+    'zlib1g-dev'
+    'libffi-dev'
+    'libssl-dev'
 )
 
 utility_packages=(
@@ -58,6 +63,7 @@ python_packages=(
     'python3-dev'
     'python3-tk'
     'python3-numpy'
+    'python3-selenium'
 )
 
 # UPDATING AND UPGRADING SYSTEM

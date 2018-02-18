@@ -64,6 +64,7 @@ python_packages=(
     'python3-tk'
     'python3-numpy'
     'python3-selenium'
+    'python3-pip'
 )
 
 # UPDATING AND UPGRADING SYSTEM

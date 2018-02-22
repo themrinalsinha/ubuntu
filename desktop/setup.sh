@@ -71,7 +71,7 @@ python_packages=(
     'python3-nltk'
     'python3-psutil'
     'python3-urllib3'
-    'python3-pyopenxl'
+    'python3-openpyxl'
     'python3-matplotlib'
 )
 
@@ -82,6 +82,7 @@ python_packages=(
 #     'pillow'
 #     'twisted'
 #     'blessed'
+#     'requests'
 #     'fake-useragent'
 # )
 

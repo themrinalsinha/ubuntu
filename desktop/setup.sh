@@ -75,15 +75,15 @@ python_packages=(
     'python3-matplotlib'
 )
 
-python_pip_packages=(
-    'tqdm'
-    'scrapy'
-    'django'
-    'pillow'
-    'twisted'
-    'blessed'
-    'fake-useragent'
-)
+# python_pip_packages=(
+#     'tqdm'
+#     'scrapy'
+#     'django'
+#     'pillow'
+#     'twisted'
+#     'blessed'
+#     'fake-useragent'
+# )
 
 # UPDATING AND UPGRADING SYSTEM
 sudo echo -e "\n${BOLD}${YELLOW}STARTING SYSTEM UPDATE${RESET}"
@@ -118,11 +118,11 @@ for pkg in "${python_packages[@]}"; do
     check_status
 done
 
-sudo echo -e "\n${BOLD}${YELLOW}INSTALLING PYTHON PACKAGES (Via. PIP)${RESET}\n"
-sudo echo -e "\tUpdating pip3..."
-pip3 install --upgrade pip --user
-for pkg in "${python_packages[@]}"; do
-    echo "${YELLOW}Installing :${RESET} ${BOLD}$pkg${RESET}"
-    sudo apt install "$pkg" -y &> /dev/null
-    check_status
-done
+# sudo echo -e "\n${BOLD}${YELLOW}INSTALLING PYTHON PACKAGES (Via. PIP)${RESET}\n"
+# sudo echo -e "\tUpdating pip3..."
+# pip3 install --upgrade pip --user
+# for pkg in "${python_packages[@]}"; do
+#     echo "${YELLOW}Installing :${RESET} ${BOLD}$pkg${RESET}"
+#     sudo apt install "$pkg" -y &> /dev/null
+#     check_status
+# done

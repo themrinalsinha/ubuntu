@@ -65,6 +65,24 @@ python_packages=(
     'python3-numpy'
     'python3-selenium'
     'python3-pip'
+    'requests'
+    'virtualenv'
+    'python3-scipy'
+    'python3-nltk'
+    'python3-psutil'
+    'python3-urllib3'
+    'python3-pyopenxl'
+    'python3-matplotlib'
+)
+
+python_pip_packages=(
+    'tqdm'
+    'scrapy'
+    'django'
+    'pillow'
+    'twisted'
+    'blessed'
+    'fake-useragent'
 )
 
 # UPDATING AND UPGRADING SYSTEM
@@ -94,6 +112,15 @@ for pkg in "${web_db_server[@]}"; do
 done
 
 sudo echo -e "\n${BOLD}${YELLOW}INSTALLING PYTHON PACKAGES${RESET}\n"
+for pkg in "${python_packages[@]}"; do
+    echo "${YELLOW}Installing :${RESET} ${BOLD}$pkg${RESET}"
+    sudo apt install "$pkg" -y &> /dev/null
+    check_status
+done
+
+sudo echo -e "\n${BOLD}${YELLOW}INSTALLING PYTHON PACKAGES (Via. PIP)${RESET}\n"
+sudo echo -e "\tUpdating pip3..."
+pip3 install --upgrade pip --user
 for pkg in "${python_packages[@]}"; do
     echo "${YELLOW}Installing :${RESET} ${BOLD}$pkg${RESET}"
     sudo apt install "$pkg" -y &> /dev/null

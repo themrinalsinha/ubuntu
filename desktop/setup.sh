@@ -121,7 +121,7 @@ done
 sudo echo -e "\n${BOLD}${YELLOW}INSTALLING PYTHON PACKAGES (Via. PIP)${RESET}\n"
 sudo echo -e "\tUpdating pip3..."
 pip3 install --upgrade pip --user
-for pkg in "${python_packages[@]}"; do
+for pkg in "${python_pip_packages[@]}"; do
     echo "${YELLOW}Installing :${RESET} ${BOLD}$pkg${RESET}"
     pip3 install --upgrade "$pkg" --user &> /dev/null
     check_status

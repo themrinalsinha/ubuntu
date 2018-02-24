@@ -16,7 +16,6 @@ check_status()
     else
         echo " ->${RED} FAILED${RESET}"
     fi
-
 }
 
 essential_packages=(

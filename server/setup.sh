@@ -2,7 +2,7 @@
 
 # This script may not work fine for the first time
 # but works absolutely fine from the second time.
-#  Tested on Ubuntu 16.04.3
+#  Tested on Ubuntu 16.04.3 and Ubuntu MATE
 
 # DEFINING COLORS
 tput clear

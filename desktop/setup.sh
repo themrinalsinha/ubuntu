@@ -23,6 +23,7 @@ essential_packages=(
     'g++'
     'git'
     'zip'
+    'htop'
     'cmake'
     'gdebi'
     'alien'
@@ -43,6 +44,7 @@ utility_packages=(
     'gparted'
     'redshift'
     'filezilla'
+    'mitmproxy'
     'redshift-gtk'
     'unity-tweak-tool'
 )

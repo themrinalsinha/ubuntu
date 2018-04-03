@@ -62,6 +62,7 @@ python_packages=(
     'python3-nltk'
     'python3-psutil'
     'python3-urllib3'
+    'python3-twisted'
     'python3-openpyxl'
 )
 
@@ -70,7 +71,6 @@ python_pip_packages=(
     'scrapy'
     'django'
     'pillow'
-    'twisted'
     'blessed'
     'requests'
     'fake-useragent'

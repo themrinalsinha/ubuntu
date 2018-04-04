@@ -60,6 +60,7 @@ python_packages=(
     'virtualenv'
     'python3-scipy'
     'python3-nltk'
+    'python3-lxml'
     'python3-psutil'
     'python3-urllib3'
     'python3-twisted'

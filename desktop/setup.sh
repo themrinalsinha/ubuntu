@@ -67,6 +67,7 @@ python_packages=(
     'python3-tk'
     'python3-numpy'
     'python3-selenium'
+    'python3-flask'
     'python3-pip'
     'python3-scipy'
     'python3-nltk'

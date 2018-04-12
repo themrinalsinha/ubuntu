@@ -46,6 +46,7 @@ essential_packages=(
 web_db_server=(
     'nginx'
     'sqlite3'
+    'docker.io'
     'gunicorn3'
     'postgresql'
     'postgresql-contrib'

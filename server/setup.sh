@@ -49,6 +49,7 @@ web_db_server=(
     'docker.io'
     'gunicorn3'
     'postgresql'
+    'letsencrpyt'
     'postgresql-contrib'
 )
 

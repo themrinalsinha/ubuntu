@@ -36,7 +36,6 @@ essential_packages=(
     'zlib1g-dev'
     'libffi-dev'
     'libssl-dev'
-    'openssh-server'
 )
 
 utility_packages=(

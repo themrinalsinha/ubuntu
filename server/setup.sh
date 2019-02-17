@@ -26,6 +26,7 @@ ESSENTIAL_PACKAGES=(
     'zip'
     'python3-pip'
     'python3-dev'
+    'fabric'
 )
 
 # Updating and upgrading system

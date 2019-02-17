@@ -1,10 +1,6 @@
 #!/bin/bash
 
-# This script may not work fine for the first time
-# but works absolutely fine from the second time.
-#  Tested on Ubuntu 16.04.3 and Ubuntu MATE
-
-# DEFINING COLORS
+# defining colors
 tput clear
 RED=`tput setaf 1`
 GREEN=`tput setaf 2`
@@ -12,7 +8,7 @@ YELLOW=`tput setaf 3`
 RESET=`tput sgr0`
 BOLD=`tput bold`
 
-# CHECK IF ERROR.
+# setting up flag to check task execution
 check_status()
 {
     if [ $? -eq 0 ]; then
@@ -22,95 +18,25 @@ check_status()
     fi
 }
 
-essential_packages=(
+ESSENTIAL_PACKAGES=(
     'build-essential'
-    'g++'
+    'mitmproxy'
+    'htop'
     'git'
     'zip'
-    'htop'
-    'cmake'
-    'gdebi'
-    'alien'
-    'unzip'
-    'sshfs'
-    'mitmproxy'
-    'libpq-dev'
-    'checkinstall'
-    'libxml2-dev'
-    'libxslt1-dev'
-    'zlib1g-dev'
-    'libffi-dev'
-    'libssl-dev'
-)
-
-web_db_server=(
-    'nginx'
-    'sqlite3'
-    'docker.io'
-    'gunicorn3'
-    'postgresql'
-    'postgresql-contrib'
-)
-
-python_packages=(
     'python3-pip'
-    'python-dev'
-    'python-numpy'
-    'virtualenv'
     'python3-dev'
-    'python3-nltk'
-    'python3-lxml'
-    'python3-numpy'
-    'python3-scipy'
-    'python3-flask'
-    'python3-psutil'
-    'python3-urllib3'
-    'python3-twisted'
-    'python3-openpyxl'
-    'python3-selenium'
 )
 
-python_pip_packages=(
-    'tqdm'
-    'scrapy'
-    'django'
-    'pillow'
-    'blessed'
-    'requests'
-    'fake-useragent'
-)
+# Updating and upgrading system
+sudo echo -e "\n${BOLD}${YELLOW}Starting system update${RESET}"
+sudo apt update -y && sudo apt upgrade -y
+sudo apt autoclean && sudo apt autoremove
 
-# UPDATING AND UPGRADING SYSTEM
-sudo echo -e "\n${BOLD}${YELLOW}STARTING SYSTEM UPDATE${RESET}"
-sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y
-check_status
-
-sudo echo -e "\n${BOLD}${YELLOW}INSTALLING ESSENTIAL PACKAGES${RESET}\n"
-for pkg in "${essential_packages[@]}"; do
-    echo "${YELLOW}Installing :${RESET} ${BOLD}$pkg${RESET}"
+# Installing essential packages
+sudo echo -e "\n${BOLD}${YELLOW}Installing Essestial Packages${RESET}\n"
+for pkg in "${ESSENTIAL_PACKAGES[@]}"; do
+    echo "${YELLO}Installing - ${RESET} ${BOLD}$pkg${RESET}"
     sudo apt install "$pkg" -y &> /dev/null
-    check_status
-done
-
-sudo echo -e "\n${BOLD}${YELLOW}INSTALLING WEB & DATABASE SERVER PACKAGES${RESET}\n"
-for pkg in "${web_db_server[@]}"; do
-    echo "${YELLOW}Installing :${RESET} ${BOLD}$pkg${RESET}"
-    sudo apt install "$pkg" -y &> /dev/null
-    check_status
-done
-
-sudo echo -e "\n${BOLD}${YELLOW}INSTALLING PYTHON PACKAGES${RESET}\n"
-for pkg in "${python_packages[@]}"; do
-    echo "${YELLOW}Installing :${RESET} ${BOLD}$pkg${RESET}"
-    sudo apt install "$pkg" -y &> /dev/null
-    check_status
-done
-
-sudo echo -e "\n${BOLD}${YELLOW}INSTALLING PYTHON PACKAGES (Via. PIP)${RESET}\n"
-sudo echo -e "\tUpdating pip3..."
-python3 -m pip install -U pip
-for pkg in "${python_pip_packages[@]}"; do
-    echo "${YELLOW}Installing :${RESET} ${BOLD}$pkg${RESET}"
-    python3 -m pip install --upgrade "$pkg" &> /dev/null
     check_status
 done

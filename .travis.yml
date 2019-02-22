@@ -7,7 +7,8 @@ addons:
   apt:
     update: true
 
-script:
+after_success:
   - echo "Deploying to server..."
-  - ssh-keygen -R hostname
-  - sshpass -p $SERVER_SECRET scp -v -r * $SERVER_USERNAME@$SERVER_HOSTNAME:/srv/hosted_files/ubuntu/
+  # - ssh-keygen -R hostname
+  - export SSHPASS=$SERVER_SECRET
+  - sshpass -e scp -v -r * $SERVER_USERNAME@$SERVER_HOSTNAME:/srv/hosted_files/ubuntu/

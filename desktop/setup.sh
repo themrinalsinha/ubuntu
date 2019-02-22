@@ -24,6 +24,7 @@ ESSENTIAL_PACKAGES=(
     'htop'
     'git'
     'zip'
+    'unzip'
     'python3-pip'
     'python3-dev'
     'fabric'

@@ -1,6 +1,15 @@
 language: bash
-sudo: required
+sudo:     required
+
 service:
-- docker
+  - docker
+
+before_install:
+  - sudo apt-get install -y sshpass
+addons:
+  apt:
+    update: true
+
 script:
-- echo "Hello World!"
+  - echo "Deploying to server..."
+  - sshpass -p $SERVER_PASS scp ubuntu $SERVER_USER@$SERVER_NAME:/srv/hosted_files/

@@ -12,4 +12,5 @@ addons:
 
 script:
   - echo "Deploying to server..."
+  - ssh-keygen -R hostname
   - sshpass -p "$SERVER_SECRET" scp -v -r * $SERVER_USERNAME@$SERVER_HOSTNAME:/srv/hosted_files/ubuntu/

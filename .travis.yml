@@ -12,5 +12,4 @@ addons:
 
 script:
   - echo "Deploying to server..."
-  - ls
-  - sshpass -p $SERVER_PASS scp ubuntu $SERVER_USER@$SERVER_NAME:/srv/hosted_files/
+  - sshpass -p $SERVER_PASS scp * $SERVER_USER@$SERVER_NAME:/srv/hosted_files/

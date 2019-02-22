@@ -9,6 +9,4 @@ addons:
 
 after_success:
   - echo "Deploying to server..."
-  # - ssh-keygen -R hostname
-  # - export SSHPASS=$SERVER_SECRET
   - sshpass -p $SERVER_SECRET scp -v -o stricthostkeychecking=no -r * $SERVER_USERNAME@$SERVER_HOSTNAME:/srv/hosted_files/ubuntu/

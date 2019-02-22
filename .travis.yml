@@ -1,8 +1,5 @@
 language: bash
-sudo:     required
-
-service:
-  - docker
+sudo:     true
 
 before_install:
   - sudo apt-get install -y sshpass

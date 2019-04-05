@@ -19,6 +19,7 @@ check_status()
 }
 
 ESSENTIAL_PACKAGES=(
+    'apt-transport-https'
     'build-essential'
     'mitmproxy'
     'htop'

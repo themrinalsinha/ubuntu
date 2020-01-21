@@ -31,6 +31,7 @@ ESSENTIAL_PACKAGES=(
     'fabric'
     'libxml2-utils'
     'python-demjson'
+    'python3-requests'
 )
 
 # Updating and upgrading system

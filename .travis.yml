@@ -21,4 +21,4 @@ after_success:
   - ssh-add <(echo $PRIVATE_KEY | base64 --decode)
   # - echo $PRIVATE_KEY | base64 -d > private_key
   # - chmod 600 private_key
-  - rsync --delete -avP * -e "ssh -oStrictHostKeyChecking=no -i private_key" $SERVER_USERNAME@$SERVER_HOSTNAME:/srv/hosted_files/ubuntu/
+  - rsync --delete -avP * -e ssh -oStrictHostKeyChecking=no $SERVER_USERNAME@$SERVER_HOSTNAME:/srv/hosted_files/ubuntu/

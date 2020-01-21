@@ -12,6 +12,12 @@ addons:
 #   - echo "Deploying to server..."
 #   - sshpass -p $SERVER_SECRET scp -v -o stricthostkeychecking=no -r * $SERVER_USERNAME@$SERVER_HOSTNAME:/srv/hosted_files/ubuntu/
 
+before_install:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - mkdir -p ~/.ssh
+  - eval $(ssh-agent -s)
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
 after_success:
   - echo "Deploying to server..."
   - echo $PRIVATE_KEY | base64 -d > private_key

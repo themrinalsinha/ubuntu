@@ -3,7 +3,6 @@ sudo:     true
 
 before_install:
   - sudo apt-get install -y sshpass
-
 addons:
   apt:
     update: true
@@ -11,15 +10,3 @@ addons:
 after_success:
   - echo "Deploying to server..."
   - sshpass -p $SERVER_SECRET scp -v -o stricthostkeychecking=no -r * $SERVER_USERNAME@$SERVER_HOSTNAME:/srv/hosted_files/ubuntu/
-
-# before_install:
-#   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-#   - eval $(ssh-agent -s)
-
-# after_success:
-#   - echo "Deploying to server..."
-#   - ssh-add <(echo $PRIVATE_KEY | base64 --decode)
-#   # - echo $PRIVATE_KEY | base64 -d > private_key
-#   # - chmod 600 private_key
-#   # - rsync --delete -avP * -e ssh -oStrictHostKeyChecking=no $SERVER_USERNAME@$SERVER_HOSTNAME:/srv/hosted_files/ubuntu/
-#   - scp -v -o stricthostkeychecking=no -r * $SERVER_USERNAME@$SERVER_HOSTNAME:/srv/hosted_files/ubuntu/

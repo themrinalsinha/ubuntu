@@ -20,7 +20,7 @@ before_install:
   - mkdir -p ~/.ssh
   - eval $(ssh-agent -s)
   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-  - echo "$PRIVATE_KEY" | base64 -d | tr -d '\r' | ssh-add -
+  - echo "$PRIVATE_KEY" | base64 -d | tr -d '\r' | ssh-add - > /dev/null
 
 after_success:
   - echo "Deploying to server..."

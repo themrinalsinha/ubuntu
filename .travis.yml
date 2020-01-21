@@ -24,4 +24,4 @@ before_install:
 after_success:
   - echo "Deploying to server..."
   - ssh-add <(echo $PRIVATE_KEY | base64 -d)
-  - rsync -av -e ssh * $SERVER_USERNAME@$SERVER_HOSTNAME:/srv/hosted_files/ubuntu/
+  - rsync -av * -e "ssh -oStrictHostKeyChecking=no" $SERVER_USERNAME@$SERVER_HOSTNAME:/srv/hosted_files/ubuntu/

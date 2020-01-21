@@ -14,9 +14,7 @@ addons:
 
 before_install:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-  - mkdir -p ~/.ssh
   - eval $(ssh-agent -s)
-  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
 after_success:
   - echo "Deploying to server..."

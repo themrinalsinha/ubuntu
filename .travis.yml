@@ -1,12 +1,27 @@
 language: bash
-sudo:     true
+sudo: true
 
-before_install:
-  - sudo apt-get install -y sshpass
+# before_install:
+#   - sudo apt-get install -y sshpass
+# addons:
+#   apt:
+#     update: true
+
+# after_success:
+#   - echo "Deploying to server..."
+#   - sshpass -p $SERVER_SECRET scp -v -o stricthostkeychecking=no -r * $SERVER_USERNAME@$SERVER_HOSTNAME:/srv/hosted_files/ubuntu/
+
 addons:
   apt:
     update: true
 
+before_install:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - mkdir -p ~/.ssh
+  - eval $(ssh-agent -s)
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
 after_success:
   - echo "Deploying to server..."
-  - sshpass -p $SERVER_SECRET scp -v -o stricthostkeychecking=no -r * $SERVER_USERNAME@$SERVER_HOSTNAME:/srv/hosted_files/ubuntu/
+  - ssh-add <(echo $PRIVATE_KEY | base64 -d)
+  - rsync -av -e ssh * $SERVER_USERNAME@$SERVER_HOSTNAME:/srv/hosted_files/ubuntu/

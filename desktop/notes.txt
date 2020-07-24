@@ -1,0 +1,12 @@
+// post setup.sh installing
+-----------------------------
+// setting up default terminal (terminal vs. terminator)
+sudo update-alternatives --config x-terminal-emulator
+
+-----------------------------
+// setting zsh as default terminal
+$ chsh
+-> /bin/zsh
+-> reboot
+
+-----------------------------

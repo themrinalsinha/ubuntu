@@ -19,18 +19,24 @@ check_status()
 }
 
 ESSENTIAL_PACKAGES=(
-    'apt-transport-https'
-    'build-essential'
-    'mitmproxy'
-    'htop'
     'git'
     'zip'
+    'zsh'
+    'gcc'
+    'htop'
     'unzip'
+    'mitmproxy'
+    'terminator'
     'python3-pip'
     'python3-dev'
-    'fabric'
+    'dconf-editor'
+    'gnome-tweaks'
     'libxml2-utils'
-    'python-demjson'
+    'build-essential'
+    'materia-gtk-theme'
+    'apt-transport-https'
+    'indicator-multiload'
+    'gnome-shell-extensions'
 )
 
 # Installing essential packages
@@ -40,3 +46,13 @@ for pkg in "${ESSENTIAL_PACKAGES[@]}"; do
     sudo apt install "$pkg" -y &> /dev/null
     check_status
 done
+
+# enabling minimize and maximize
+sudo echo -e "\n${BOLD}${YELLOW}Enabling Minimize & Maximize${RESET}\n"
+gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+check_status
+
+# setting up zsh
+sudo echo -e "\n${BOLD}${YELLOW}Setting up zsh terminal${RESET}\n"
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+check_status

@@ -61,3 +61,4 @@ check_status
 sudo echo -e "\n${BOLD}${YELLOW}Setting up flat icons${RESET}\n"
 sudo add-apt-repository -u ppa:snwh/ppa -y
 sudo apt install paper-icon-theme
+check_status

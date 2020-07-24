@@ -56,3 +56,8 @@ check_status
 sudo echo -e "\n${BOLD}${YELLOW}Setting up zsh terminal${RESET}\n"
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 check_status
+
+# setting up flat icon
+sudo echo -e "\n${BOLD}${YELLOW}Setting up flat icons${RESET}\n"
+sudo add-apt-repository -u ppa:snwh/ppa -y
+sudo apt install paper-icon-theme

@@ -39,6 +39,9 @@ ESSENTIAL_PACKAGES=(
     'gnome-shell-extensions'
 )
 
+# updating and upgrading before installation
+sudo apt-get update && sudo apt-get upgrade -y
+
 # Installing essential packages
 sudo echo -e "\n${BOLD}${YELLOW}Installing Essestial Packages${RESET}\n"
 for pkg in "${ESSENTIAL_PACKAGES[@]}"; do
@@ -62,3 +65,9 @@ sudo echo -e "\n${BOLD}${YELLOW}Setting up flat icons${RESET}\n"
 sudo add-apt-repository -u ppa:snwh/ppa -y
 sudo apt install paper-icon-theme
 check_status
+
+# cleaning junks
+sudo echo -e "\n${BOLD}${YELLOW}Cleaning junks...${RESET}\n"
+sudo apt autoclean && sudo apt autoremove
+check_status
+

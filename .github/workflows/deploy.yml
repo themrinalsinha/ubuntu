@@ -18,4 +18,4 @@ jobs:
     - name: Installing Required Packages
       run: sudo apt-get install -y sshpass
     - name: Deploying to the server
-      run: sshpass -p $SERVER_SECRET scp -v -o stricthostkeychecking=no -r * $SERVER_USERNAME@$SERVER_HOSTNAME:/srv/hosted_files/ubuntu/
+      run: sshpass -p ${{ secrets.SERVER_SECRET }} scp -v -o stricthostkeychecking=no -r * ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOSTNAME }}:/srv/hosted_files/ubuntu/

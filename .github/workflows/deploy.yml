@@ -8,29 +8,14 @@ on:
   push:
     branches: [ master ]
 
-# # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-# jobs:
-#   deploy:
-#     name: Deploying Scripts
-#     runs-on: ubuntu-latest
-#     steps:
-#     - uses: actions/checkout@v2
-#     - name: Installing Required Packages
-#       run: sudo apt-get install -y sshpass
-#     - name: Deploying to the server
-#       run: sshpass -p ${{ secrets.SERVER_SECRET }} scp -v -o stricthostkeychecking=no -r * ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOSTNAME }}:/srv/hosted_files/ubuntu/
-
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   deploy:
-    name: Deploying Automation Script
+    name: Deploying Scripts
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Installing required packages
-      run: |
-        mkdir -p ~/.ssh
-        eval $(ssh-agent -s)
-        echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-        echo "${{ secrets.SERVER_PRIVATE_KEY }}" | base64 -d | tr -d '\r' | ssh-add - > /dev/null
-        echo "DEPLOYING TO SERVER"
-        rsync -av * -e "ssh -oStrictHostKeyChecking=no" ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOSTNAME }}:/srv/hosted_files/ubuntu/
+    - name: Installing Required Packages
+      run: sudo apt-get install -y sshpass
+    - name: Deploying to the server
+      run: sshpass -p ${{ secrets.SERVER_SECRET }} scp -v -o stricthostkeychecking=no -r * ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOSTNAME }}:/srv/hosted_files/ubuntu/

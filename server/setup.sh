@@ -25,13 +25,14 @@ ESSENTIAL_PACKAGES=(
     'htop'
     'git'
     'zip'
+    'make'
     'unzip'
+    'libc-dev'
+    'libffi-dev'
+    'openssl-dev'
     'python3-pip'
     'python3-dev'
-    'fabric'
     'libxml2-utils'
-    'python-demjson'
-    'python3-requests'
 )
 
 # Updating and upgrading system

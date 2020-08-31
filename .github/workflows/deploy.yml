@@ -23,4 +23,4 @@ jobs:
       run: |
         echo ${{ secrets.SSH_PRIV_KEY }} | base64 -d > private_key
         chmod 600 private_key
-        scp -v -e "ssh -oStrictHostKeyChecking=no -i private_key" -r * ${{ secrets.SERVER_USERNAME }}@mrinal.xyz:/srv/hosted_files/ubuntu
+        scp -i private_key -r * ${{ secrets.SERVER_USERNAME }}@mrinal.xyz:/srv/hosted_files/ubuntu

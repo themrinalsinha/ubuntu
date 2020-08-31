@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Deploying ubuntu shell script
+name: Deploying ubuntu system automation shell scripts
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -11,16 +11,11 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   deploy:
-    name: Deploying Scripts
+    name: deploying shell scripts
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Installing Required Packages
+    - name: installing dependencies
       run: sudo apt-get install -y sshpass
-    - name: Deploying to the server
-      run: sshpass -p ${{ secrets.SERVER_SECRET }} scp -v -o stricthostkeychecking=no -r * ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOSTNAME }}:/srv/hosted_files/ubuntu/
-    - name: Testing deployment on new server (mrinal.xyz)
-      run: |
-        echo ${{ secrets.SSH_PRIV_KEY }} | base64 -d > private_key
-        chmod 600 private_key
-        scp -v -o stricthostkeychecking=no -i private_key -r * root@mrinal.xyz:/srv/hosted_files/ubuntu
+    - name: deploying scripts to the server
+      run: sshpass -p ${{ secrets.SECRET }} scp -v -o stricthostkeychecking=no -r * ${{ secrets.USER }}@${{ secrets.HOSTNAME }}:/srv/hosted_files/ubuntu/

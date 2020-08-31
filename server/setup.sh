@@ -29,7 +29,6 @@ ESSENTIAL_PACKAGES=(
     'unzip'
     'libc-dev'
     'libffi-dev'
-    'openssl-dev'
     'python3-pip'
     'python3-dev'
     'libxml2-utils'

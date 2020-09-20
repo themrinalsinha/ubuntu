@@ -57,6 +57,7 @@ done
 # enabling minimize and maximize
 sudo echo -e "\n${BOLD}${YELLOW}Enabling Minimize & Maximize${RESET}\n"
 gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+gsettings set org.gnome.desktop.wm.preferences action-double-click-titlebar 'toggle-maximize'
 check_status
 
 # setting up zsh

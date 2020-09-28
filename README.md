@@ -1,5 +1,5 @@
 ## System Management Scripts (Ubuntu)
-![Deploying ubuntu system automation shell scripts](https://github.com/TheMrinalSinha/ubuntu/workflows/Deploying%20ubuntu%20system%20automation%20shell%20scripts/badge.svg)
+![DEPLOY (dl.mrinal.xyz)](https://github.com/TheMrinalSinha/ubuntu/workflows/DEPLOY%20(dl.mrinal.xyz)/badge.svg)
 
 | Tested on |
 |- |

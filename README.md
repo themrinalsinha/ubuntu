@@ -38,6 +38,13 @@
   - NOTE: **POST INSTALLATION**
     - if you want to change the default terminal use command `$ sudo update-alternatives --config x-terminal-emulator`
     - if you want to setup default `shell` as `zsh` use command `$ chsh` in prompt enter `/bin/zsh` and reboot. (it will set default shell as zsh)
+    - run docker without sudo
+      ```shell
+      $ sudo usermod -aG docker ${USER}
+      $ su - ${USER}
+      $ id -nG
+      $ sudo usermod -aG docker ${USER}
+      ```
 
 - **server/setup.sh**
     - To run: `$ wget -O - https://dl.mrinal.xyz/ubuntu/server/setup.sh | bash`

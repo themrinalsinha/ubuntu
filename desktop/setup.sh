@@ -30,7 +30,6 @@ ESSENTIAL_PACKAGES=(
     'mitmproxy'
     'libffi-dev'
     'terminator'
-    'openssl-dev'
     'python3-pip'
     'python3-dev'
     'dconf-editor'
@@ -79,17 +78,17 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 
-# using docker without sudo
-sudo echo -e "\n${BOLD}${YELLOW}Adding current user to docker group${RESET}\n"
-sudo usermod -aG docker ${USER}
-su - ${USER}
-id -nG
-sudo usermod -aG docker ${USER}
-
 # setting up docker compose
 sudo echo -e "\n${BOLD}${YELLOW}Downloading and setting docker-compose${RESET}\n"
-sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+check_status
+
+# installing lazy-git
+sudo echo -e "\n${BOLD}${YELLOW}Setting up lazygit${RESET}\n"
+sudo add-apt-repository ppa:lazygit-team/release -y
+sudo apt-get update
+sudo apt-get install lazygit -y
 check_status
 
 # cleaning junks

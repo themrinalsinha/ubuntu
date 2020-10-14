@@ -75,3 +75,7 @@
     - it will help you in finding out the system details like
       - `CPU model and cores`, `Disk`, `Memory`, `Swap`, `OS`, `Architecture`, `Kernel`, `Location & Region etc...`
     - Along with that `I/O` and `Network Speed`
+----
+
+### Other tools and packages to have
+- foliate (epub reading): https://github.com/johnfactotum/foliate/releases

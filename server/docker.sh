@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# defining colors
+SYSTEM=$(uname -s)
+
+# helper function to check command execution status
+# defining color encoding
 tput clear
 RED=`tput setaf 1`
 GREEN=`tput setaf 2`
@@ -8,7 +11,7 @@ YELLOW=`tput setaf 3`
 RESET=`tput sgr0`
 BOLD=`tput bold`
 
-# setting up flag to check task execution
+# function to check status
 check_status()
 {
     if [ $? -eq 0 ]; then
@@ -18,17 +21,34 @@ check_status()
     fi
 }
 
-# installing and setting up docker
-sudo echo -e "\n${BOLD}${YELLOW}Starting docker installation${RESET}\n"
-sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-sudo apt-get update -y
-sudo apt-get install docker-ce docker-ce-cli containerd.io -y
-check_status
+if [[ "$SYSTEM" == "Linux" ]]; then
 
-# installing and setting up docker compose
-sudo echo -e "\n${BOLD}${YELLOW}Downloading and setting docker-compose${RESET}\n"
-sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-check_status
+    if [ -f /etc/lsb-release ]; then
+        echo -e "\n${BOLD}${YELLOW}---- DEBIAN BASED MACHINE ----${RESET}\n"
+        sudo apt-get update && sudo apt-get upgrade -y
+        check_status
+
+        echo -e "\n---- Installing Prerequisite ----\n"
+        sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+        check_status
+
+        echo -e "\n---- Adding Docker's official GPG key ----\n"
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+        check_status
+
+        echo -e "\n---- Updating source list ----\n"
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+        check_status
+
+        echo -e "\n---- Install Docker Engine ----\n"
+        sudo apt-get update
+        sudo apt-get install docker-ce docker-ce-cli containerd.io
+        check_status
+    fi
+
+    if [ -f /etc/redhat-release ]; then
+        echo -e "\n${BOLD}${YELLOW}---- REDHAT BASED MACHINE ----${RESET}\n"
+
+    fi
+
+fi

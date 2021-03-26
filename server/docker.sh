@@ -69,4 +69,10 @@ if [[ "$SYSTEM" == "Linux" ]]; then
     echo -e "\n---- Making docker-compose executable ----\n"
     sudo chmod +x /usr/bin/docker-compose
     check_status
+
+    echo -e "\n---- Starting docker (fail safe) ----\n"
+    sudo systemctl start docker.service
+    check_status
+
+    echo -e "\n${BOLD}${YELLOW}---- ( DONE ) ----${RESET}\n"
 fi

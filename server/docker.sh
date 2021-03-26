@@ -29,7 +29,7 @@ if [[ "$SYSTEM" == "Linux" ]]; then
         check_status
 
         echo -e "\n---- Installing Prerequisite ----\n"
-        sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+        sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release -y
         check_status
 
         echo -e "\n---- Adding Docker's official GPG key ----\n"
@@ -42,13 +42,31 @@ if [[ "$SYSTEM" == "Linux" ]]; then
 
         echo -e "\n---- Install Docker Engine ----\n"
         sudo apt-get update
-        sudo apt-get install docker-ce docker-ce-cli containerd.io
+        sudo apt-get install docker-ce docker-ce-cli containerd.io -y
         check_status
     fi
 
     if [ -f /etc/redhat-release ]; then
         echo -e "\n${BOLD}${YELLOW}---- REDHAT BASED MACHINE ----${RESET}\n"
 
+        echo -e "\n---- Installing Prerequisite ----\n"
+        sudo yum install -y yum-utils
+        check_status
+
+        echo -e "\n---- Updating source list ----\n"
+        sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+        check_status
+
+        echo -e "\n---- Install Docker Engine ----\n"
+        sudo yum install docker-ce docker-ce-cli containerd.io -y
+        check_status
     fi
 
+    echo -e "\n${BOLD}${YELLOW}---- Installing Docker Compose ----${RESET}\n"
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.28.6/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
+    check_status
+
+    echo -e "\n---- Making docker-compose executable ----\n"
+    sudo chmod +x /usr/bin/docker-compose
+    check_status
 fi
